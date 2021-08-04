@@ -1,0 +1,79 @@
+
+<html>
+  <head>
+      <title>Display Employee Data</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        thead{
+            background-color: green;
+        }
+        tbody{
+            background-color: darkcyan;
+        }
+        td:hover{
+            background-color: yellow;
+            color: red;
+        }
+        th:hover{
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+          {% if employee_list %}
+              <h1>Total Count of Managers : {{ manager_role_count }}</h1>
+              <h1>Salaries greater tahn or equel to 40000  Count is : {{ salaries }}</h1>
+             <h1>Display All Employees Information.</h1>
+              <table class="table table-striped table-bordered table-dark table-hover">
+                <thead>
+                   <th>FirstName</th>
+                   <th>LastName</th>
+                   <th>UserName</th>
+                   <th>Email</th>
+                   <th>Mobile</th>
+                   <th>Role</th>
+                   <th>Salary</th>
+                   <th>City</th>
+                </thead>
+               {%  for employee  in  employee_list %}
+                 <tbody>
+                   <tr>
+                      <td>{{ employee.first_name }}</td>
+                      <td>{{ employee.last_name }}</td>
+                      <td>{{ employee.username }}</td>
+                      <td>{{ employee.email }}</td>
+                      <td>{{ employee.mobile }}</td>
+                      <td>{{ employee.role }}</td>
+                      <td>{{ employee.salary }}</td>
+                      <td>{{ employee.city }}</td>
+                   </tr>
+                 </tbody>
+               {% endfor %}
+
+               <thead>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>UserName</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Role</th>
+                  <th>Salary</th>
+                  <th>City</th>
+               </thead>
+
+              </table>
+          {% else %}
+             <h2>No Employees data available.</h2>
+          {% endif %}
+
+      </div>
+  </body>
+</html>
